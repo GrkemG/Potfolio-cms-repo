@@ -1,0 +1,61 @@
+# Loggbok – Personal Portfolio CMS
+
+Detta dokument används för att logga arbetsgång, timmar och aktiviteter under examensprojektet. Totalt ska ca 200 timmar dokumenteras.
+
+---
+
+## Sprint 1 – Planning & Setup (Vecka 1)
+**Tid:** 5h  
+**Aktiviteter:**
+- Projektidé godkänd av handledare
+- Skapade GitHub-repo och initial struktur
+- Skapade mappstruktur: frontend, backend, docs
+- Skapade README.md med projektbeskrivning
+- Grundläggande krav- och begränsningsdokumentation
+
+---
+
+## Sprint 2 – Backend Development (Vecka 2–3)
+**Tid:** 40h  
+**Aktiviteter:**
+- PHP-backend setup
+- Databasanslutning med PDO
+- Skapade tabeller: users, projects, skills, site_info
+- CRUD endpoints för portfolio-projekt
+- Admin-login och autentisering
+- Testade API-endpoints med Postman
+
+---
+
+## Sprint 3 – Frontend Development (Vecka 3–5)
+**Tid:** 10h  
+**Aktiviteter:**
+- React + TypeScript setup
+- Skapade komponenter: ProjectList, ProjectDetail, Skills, AdminPanel
+- Kopplade frontend till backend via REST API (JSON)
+- Responsiv design och layout med CSS
+- Grundläggande routing för SPA
+
+---
+
+## Sprint 4 – Admin Panel & Integration (Vecka 5–6)
+**Tid:** 20h  
+**Aktiviteter:**
+- Fullständig adminpanel för CRUD på projekt och skills
+- Validering av formulär och felhantering
+- Integrering av frontend och backend
+- Testade olika användarscenarier (admin / visitor)
+
+---
+
+## Sprint 5 – Testing, Polishing & Documentation (Vecka 7–8)
+**Tid:** 30h  
+**Aktiviteter:**
+- Bugfixing och kodrensning
+- Slutlig dokumentation och README-uppdatering
+- Skapade loggbok och tidsrapport
+- Förberedde deployment och presentation
+
+---
+
+

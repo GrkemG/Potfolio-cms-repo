@@ -1,21 +1,21 @@
 <?php
-// backend/config.php
-$host = 'localhost';
-$db   = 'portfolio_cms';
-$user = 'root';   // ditt MySQL-användarnamn
-$pass = '';       // ditt MySQL-lösenord
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-];
+$host = "localhost";
+$dbname = "portfolio_cms";
+$user = "root";      // Din MySQL användare
+$pass = "";          // Ditt lösenord
 
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode(["error" => $e->getMessage()]);
+    exit();
 }
+
+// CORS headers så frontend kan kommunicera
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Content-Type: application/json");
 ?>

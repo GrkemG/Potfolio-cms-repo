@@ -1,34 +1,28 @@
 <?php
-require 'config.php';
-header('Content-Type: application/json');
+header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST");
+header("Access-Control-Allow-Headers: Content-Type");
 
-$method = $_SERVER['REQUEST_METHOD'];
+require "db.php";
 
-switch($method){
-    case 'GET':
-        $stmt = $pdo->query("SELECT * FROM skills ORDER BY created_at DESC");
-        echo json_encode($stmt->fetchAll());
-        break;
-
-    case 'POST':
-        $data = json_decode(file_get_contents("php://input"), true);
-        $stmt = $pdo->prepare("INSERT INTO skills (name, level, user_id) VALUES (?, ?, ?)");
-        $stmt->execute([$data['name'], $data['level'], 1]);
-        echo json_encode(['success' => true]);
-        break;
-
-    case 'PUT':
-        $data = json_decode(file_get_contents("php://input"), true);
-        $stmt = $pdo->prepare("UPDATE skills SET name=?, level=? WHERE id=?");
-        $stmt->execute([$data['name'], $data['level'], $data['id']]);
-        echo json_encode(['success' => true]);
-        break;
-
-    case 'DELETE':
-        $id = $_GET['id'];
-        $stmt = $pdo->prepare("DELETE FROM skills WHERE id=?");
-        $stmt->execute([$id]);
-        echo json_encode(['success' => true]);
-        break;
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $stmt = $conn->query("SELECT * FROM skills ORDER BY id DESC");
+    echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+    exit;
 }
-?>
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $data = json_decode(file_get_contents("php://input"), true);
+
+    if (!isset($data["name"]) || trim($data["name"]) === "") {
+        http_response_code(400);
+        echo json_encode(["error" => "Skill name required"]);
+        exit;
+    }
+
+    $stmt = $conn->prepare("INSERT INTO skills (name) VALUES (:name)");
+    $stmt->execute(["name" => $data["name"]]);
+
+    echo json_encode(["success" => true]);
+}

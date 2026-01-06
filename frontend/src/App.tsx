@@ -1,9 +1,20 @@
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Admin from "./pages/Admin";
+
 function App() {
   return (
-    <div>
-      <h1>Portfolio CMS</h1>
-      <p>Frontend is running 🚀</p>
-    </div>
+    <BrowserRouter>
+      <nav style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
+        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
+        <Link to="/admin">Admin</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

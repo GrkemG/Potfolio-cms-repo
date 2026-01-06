@@ -1,34 +1,39 @@
 <?php
-require 'config.php';
-header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: http://localhost:3002");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
-$method = $_SERVER['REQUEST_METHOD'];
-
-switch($method){
-    case 'GET': // Hämta alla projekt
-        $stmt = $pdo->query("SELECT * FROM projects ORDER BY created_at DESC");
-        echo json_encode($stmt->fetchAll());
-        break;
-
-    case 'POST': // Skapa nytt projekt
-        $data = json_decode(file_get_contents("php://input"), true);
-        $stmt = $pdo->prepare("INSERT INTO projects (title, description, image, link, user_id) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$data['title'], $data['description'], $data['image'], $data['link'], 1]); // admin user_id=1
-        echo json_encode(['success' => true]);
-        break;
-
-    case 'PUT': // Uppdatera projekt
-        $data = json_decode(file_get_contents("php://input"), true);
-        $stmt = $pdo->prepare("UPDATE projects SET title=?, description=?, image=?, link=? WHERE id=?");
-        $stmt->execute([$data['title'], $data['description'], $data['image'], $data['link'], $data['id']]);
-        echo json_encode(['success' => true]);
-        break;
-
-    case 'DELETE': // Ta bort projekt
-        $id = $_GET['id'];
-        $stmt = $pdo->prepare("DELETE FROM projects WHERE id=?");
-        $stmt->execute([$id]);
-        echo json_encode(['success' => true]);
-        break;
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
+    http_response_code(200);
+    exit;
 }
-?>
+
+require "db.php";
+
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $stmt = $conn->query("SELECT id, title FROM projects ORDER BY id DESC");
+    echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+    exit;
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // 🔧 KRITISK RAD – PHP + Windows fix
+    $_POST = json_decode(file_get_contents("php://input"), true) ?? [];
+
+    if (!isset($_POST["title"]) || trim($_POST["title"]) === "") {
+        http_response_code(400);
+        echo json_encode(["error" => "Title required"]);
+        exit;
+    }
+
+    $stmt = $conn->prepare(
+        "INSERT INTO projects (title, created_at) VALUES (:title, NOW())"
+    );
+    $stmt->execute([
+        ":title" => $_POST["title"]
+    ]);
+
+    echo json_encode(["success" => true]);
+    exit;
+}

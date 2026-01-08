@@ -1,4 +1,7 @@
 <?php
+phpinfo();
+exit;
+
 $host = "localhost";           // MAMP default
 $dbname = "portfolio_cms";     // din databas
 $user = "root";                // MAMP default

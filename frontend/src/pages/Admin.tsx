@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const API_BASE = "http://localhost/Portfolio-cms/backend";
 
@@ -8,53 +8,36 @@ type Project = {
 };
 
 const Admin = () => {
-  console.log("ADMIN COMPONENT LOADED");
-
   const [projects, setProjects] = useState<Project[]>([]);
-  const [title, setTitle] = useState("");
+  const [error, setError] = useState<string | null>(null);
 
-  // Hämta projects
   useEffect(() => {
-    fetch(`${API_BASE}/projects.php`)
-      .then(res => res.json())
-      .then(data => setProjects(data))
-      .catch(err => console.error(err));
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/projects.php`);
+
+        if (!res.ok) {
+          throw new Error("Kunde inte hämta projekt");
+        }
+
+        const data = await res.json();
+        setProjects(data);
+      } catch (err) {
+        console.error("Fetch error:", err);
+        setError("Backend är inte igång");
+      }
+    };
+
+    fetchProjects();
   }, []);
-
-  // LÄGG TILL PROJECT
-  const addProject = async () => {
-    alert("ADD PROJECT CLICKED");
-
-    if (!title.trim()) return;
-
-    await fetch(`${API_BASE}/projects.php`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title })
-    });
-
-    // hämta igen
-    const res = await fetch(`${API_BASE}/projects.php`);
-    setProjects(await res.json());
-    setTitle("");
-  };
 
   return (
     <div style={{ padding: "20px" }}>
       <h1>Admin</h1>
 
-      <input
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Project title"
-        style={{ padding: "6px", marginRight: "10px" }}
-      />
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <button type="button" onClick={addProject}>
-        Add Project
-      </button>
-
-      <ul style={{ marginTop: "20px" }}>
+      <ul>
         {projects.map(p => (
           <li key={p.id}>{p.title}</li>
         ))}

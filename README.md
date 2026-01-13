@@ -67,3 +67,8 @@ The following requirements are fulfilled by this project:
    ```bash
    npm install
    npm start
+
+## The admin site and projects is done
+- Admin is done
+- Projects are fine works great
+- Some changes (From 27th December until 8th of January)

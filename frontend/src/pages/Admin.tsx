@@ -44,6 +44,6 @@ const Admin = () => {
       </ul>
     </div>
   );
-};
+}; 
 
 export default Admin;

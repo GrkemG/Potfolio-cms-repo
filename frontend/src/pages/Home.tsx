@@ -1,31 +1,20 @@
-import { useEffect, useState } from "react";
-
-const API_BASE = "http://localhost/Portfolio-cms/backend";
-
-type Project = {
-  id: number;
-  title: string;
-};
+import Hero from "../components/Hero";
+import About from "../components/About";
+import Experience from "../components/Experience";
+import Projects from "../components/Projects";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 const Home = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    fetch(`${API_BASE}/projects.php`)
-      .then(res => res.json())
-      .then(data => setProjects(data));
-  }, []);
-
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Home</h1>
-
-      <ul>
-        {projects.map(p => (
-          <li key={p.id}>{p.title}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <Hero />
+      <About />
+      <Experience />
+      <Projects />
+      <Contact />
+      <Footer />
+    </>
   );
 };
 

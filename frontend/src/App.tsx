@@ -5,8 +5,8 @@ import Admin from "./pages/Admin";
 function App() {
   return (
     <BrowserRouter>
-      <nav style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
-        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
+      <nav>
+        <Link to="/">Home</Link>
         <Link to="/admin">Admin</Link>
       </nav>
 

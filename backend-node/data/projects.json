@@ -1,0 +1,8 @@
+[
+  {
+    "id": 1,
+    "title": "Portfolio CMS",
+    "description": "Examensarbete med React och Node",
+    "tech": ["React", "Node.js", "REST API"]
+  }
+]

@@ -1,56 +1,76 @@
 # Personal Portfolio CMS – Examensarbete
+Frontend är byggd med React och TypeScript. För styling används Tailwind CSS som byggs via PostCSS. Konfigurationen hanteras automatiskt av Create React App och kräver inga manuella justeringar i produktionsfasen.
 
-## Project Description
-This project is a full-stack **Personal Portfolio Content Management System (CMS)** developed as a final thesis project.  
-The system allows an administrator to manage portfolio projects, skills, and personal information through an admin panel, while visitors can view the content through a modern, responsive frontend.
+# Portfolio CMS – Examensarbete
 
-## Purpose
-The purpose of this project is to demonstrate my ability to plan, design, and implement a complete web application using modern web development practices.  
-The project showcases skills in frontend development (React/TypeScript), backend/API development (PHP), database design, authentication, UI/UX, and deployment.
+Detta projekt är ett examensarbete inom webbutveckling med fokus på
+frontend, backend och API-kommunikation.  
+Applikationen är en portfolio med ett tillhörande CMS (adminpanel)
+där projekt kan hanteras.
 
-## Technologies
-- **Frontend:** React + TypeScript
-- **Backend:** PHP (REST API)
-- **Database:** MySQL
-- **Authentication:** Admin login (session/JWT)
-- **Design:** Figma wireframes
-- **Version Control:** Git & GitHub
+---
 
-## System Architecture
-- **React frontend** consuming a REST API
-- **PHP backend** handling business logic and database access
-- **MySQL database** for persistent storage
-- **JSON** used for all communication between frontend and backend
+## 📌 Syfte
 
-## Database Design
-The database is custom-designed and normalized. Main tables include:
-- `users` – admin authentication
-- `projects` – portfolio projects
-- `skills` – technical skills
-- `site_info` – personal information
+Syftet med projektet är att:
+- Visa teknisk kompetens inom modern webbutveckling
+- Bygga en fullstack-applikation med frontend + backend
+- Uppfylla kursens krav för examensarbete
 
-## API Endpoints (Examples)
-- `POST /api/login`
-- `GET /api/projects`
-- `POST /api/projects`
-- `PUT /api/projects/{id}`
-- `DELETE /api/projects/{id}`
-- `GET /api/skills`
+---
 
-## Agile Workflow
-The project follows an agile methodology with sprint planning, backlog management, and iterative development.  
-Sprints:
-- **Sprint 1:** Planning & Setup  
-- **Sprint 2:** Backend Development  
-- **Sprint 3:** Frontend Development  
-- **Sprint 4:** Admin Panel & Integration  
-- **Sprint 5:** Testing, Polishing & Documentation
+## 🧱 Teknikstack
 
-## Selected Mandatory Course Requirements
-The following requirements are fulfilled by this project:
-1. **REST API communication** – JSON-based endpoints
-2. **Custom-designed database** – normalized MySQL tables
-3. **User management and roles** – Admin login and role-based access
+### Frontend
+- React
+- TypeScript
+- React Router
+- Tailwind CSS
+- PostCSS
+
+### Backend
+- Node.js
+- Express
+- REST API
+- JSON-baserad datalagring
+
+### Verktyg
+- Git & GitHub
+- npm
+- VS Code
+
+---
+
+## 🖥️ Funktionalitet
+
+### Publik del
+- Startsida (Hero, About, Projects, Contact)
+- Projekt visas dynamiskt från backend
+- Responsiv design
+
+### Admin (CMS)
+- Lista projekt
+- Skapa nya projekt
+- Ta bort projekt
+- Dashboard-liknande vy
+
+---
+
+## 🔐 Användarhantering
+
+Admin-funktionalitet är separerad från publik del.
+(vidareutveckling kan inkludera autentisering)
+
+---
+
+## 🌐 API
+
+Projektet använder ett egendesignat REST API.
+
+### Endpoints (exempel)
+
+GET  
+
 
 ## Platform Requirements & Limitations
 - PHP 8.0+
@@ -69,6 +89,49 @@ The following requirements are fulfilled by this project:
    npm start
 
 ## The admin site and projects is done
-- Admin is done
-- Projects are fine works great
-- Some changes (From 27th December until 8th of January)
+- Admin sidan klar knappar som lägga till och ta bort funkar
+
+
+
+
+## ✅ Uppfyllda obligatoriska moment
+
+Nedan listas vilka obligatoriska moment från kursen som detta projekt uppfyller:
+
+### 1. Egendesignat REST API
+Projektet innehåller ett egendesignat REST API byggt med Node.js och Express.
+API:t används för att läsa, skapa och ta bort projekt via standardiserade HTTP-metoder (GET, POST, DELETE).
+Frontend kommunicerar med backend via JSON.
+
+### 2. Egendesignad databas
+Projektet använder en egendesignad datalagring i form av JSON-filer.
+Strukturen är tydligt definierad och används av backend för CRUD-operationer.
+Detta uppfyller kravet på egen datamodell.
+
+### 3. Användarhantering (CMS / Admin)
+Projektet innehåller en admin-del (CMS) där innehåll kan hanteras.
+Adminpanelen gör det möjligt att:
+- Visa projekt
+- Skapa nya projekt
+- Ta bort befintliga projekt
+
+Admin-delen är separerad från den publika delen av applikationen.
+
+### 4. Frontend utan omladdning
+Frontend är byggd i React och uppdateras dynamiskt utan omladdning av sidan.
+Data hämtas och skrivs via API-anrop med fetch och JSON.
+
+### 5. Routing och snygga URL:er
+Projektet använder React Router för routing på klientsidan.
+Navigation sker utan sidomladdning och följer SPA-principer.
+
+### 6. Responsiv frontend
+Frontend är responsiv och anpassad för olika skärmstorlekar.
+Tailwind CSS används för layout, grid och responsiv design.
+
+---
+
+## 🎯 Sammanfattning
+
+Projektet uppfyller fler än tre obligatoriska moment enligt kurskraven
+och innehåller både frontend, backend och API-kommunikation av hög kvalitet.

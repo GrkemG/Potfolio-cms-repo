@@ -3,6 +3,18 @@
     "id": 1,
     "title": "Portfolio CMS",
     "description": "Examensarbete med React och Node",
-    "tech": ["React", "Node.js", "REST API"]
+    "tech": [
+      "React",
+      "Node.js",
+      "REST API"
+    ]
+  },
+  {
+    "id": 1768409538796,
+    "title": "Resturang meny"
+  },
+  {
+    "id": 1768409559549,
+    "title": "App"
   }
 ]

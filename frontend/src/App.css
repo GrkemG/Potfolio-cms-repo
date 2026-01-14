@@ -1,21 +1,33 @@
-.card {
-  background: #ffffff;
-  border-radius: 0.75rem;
-  padding: 2rem;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 10px 25px -15px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* =========================
+   NAVIGATION
+========================= */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.2rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.25);
+nav a {
+  text-decoration: none;
+  color: #111827;
+  font-weight: 500;
+  position: relative;
 }
 
-/* TECH TAGS */
-.tag {
-  background-color: #e5e7eb;
-  padding: 0.35rem 0.9rem;
-  border-radius: 9999px;
-  font-size: 0.85rem;
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #111827;
+  transition: width 0.2s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }

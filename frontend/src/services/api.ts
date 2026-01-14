@@ -1,14 +1,16 @@
-const API_BASE = "http://localhost/Portfolio-cms/backend";
+export type Project = {
+  id: string;
+  title: string;
+};
 
-export const getProjects = async () => {
-  try {
-    const response = await fetch(`${API_BASE}/projects.php`);
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching projects:", error);
-    return [];
+const API_BASE = "http://localhost:3001/api";
+
+export const getProjects = async (): Promise<Project[]> => {
+  const res = await fetch(`${API_BASE}/projects`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch projects");
   }
+
+  return res.json();
 };

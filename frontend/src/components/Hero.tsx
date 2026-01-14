@@ -1,26 +1,30 @@
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
-    <section className="hero section-light">
+    <section className="hero section-dark">
       <div className="page hero-content animate-fadeIn">
 
-        <p className="hero-subtitle">Hello, I'm</p>
+        <p className="hero-subtitle">
+          Hej, jag heter
+        </p>
 
-        <h1 className="hero-title">Görkem Göker</h1>
+        <h1 className="hero-title">
+          Görkem Göker
+        </h1>
 
-        <p className="hero-role">Frontend / Fullstack Developer</p>
+        <p className="hero-role">
+          Frontend / Fullstack-utvecklare
+        </p>
 
         <p className="hero-text">
-          I build modern, responsive web applications with React and Node.js,
-          focusing on clean code and user-friendly solutions.
+          Jag bygger moderna och responsiva webbapplikationer med React och Node.js,
+          med fokus på ren kod och användarvänliga lösningar.
         </p>
 
         <div className="hero-buttons">
           <a href="#projects" className="button">
-            View Projects
+            Visa projekt
           </a>
-          <a href="#contact" className="button outline">
-            Contact
-          </a>
+
         </div>
 
       </div>
@@ -29,3 +33,4 @@ const Hero = () => {
 };
 
 export default Hero;
+export {};

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Contact: React.FC = () => {
-  // State för formulärfält
+  // State för formuläret
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  // Hanterar ändringar i inputfält
+  // Hantera ändringar
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -21,113 +21,86 @@ const Contact: React.FC = () => {
     }));
   };
 
-  // Hanterar submit (just nu endast frontend-logik)
+  // Skicka formulär (frontend-simulering)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Här kan du senare koppla backend / API
-    console.log("Kontaktformulär skickat:", formData);
+    console.log("Kontaktformulär:", formData);
 
-    // Simulerar skickat formulär
     setTimeout(() => {
-      alert("Meddelandet har skickats (frontend-simulering).");
+      alert("Tack! Ditt meddelande har skickats.");
       setFormData({ name: "", email: "", message: "" });
       setIsLoading(false);
     }, 1000);
   };
 
   return (
-    <section id="contact" className="py-16 px-6 bg-white">
-      <div className="max-w-4xl mx-auto text-center">
-        
-        {/* Rubriker */}
-        <p className="text-lg text-gray-500 uppercase tracking-wider">
-          Get in touch
-        </p>
-        <h2 className="text-4xl font-bold text-gray-900 mt-2">
-          Contact Me
-        </h2>
+    <section id="contact" className="section section-light">
+      <div className="page animate-fadeIn">
 
-        {/* Kontaktuppgifter */}
-        <div className="mt-6 text-gray-700 space-y-2">
-          <p>
-            <strong>Namn:</strong> Görkem Göker
-          </p>
-          <p>
-            <strong>Email:</strong> gorkem.goker9@gmail.com
-          </p>
-          <p>
-            <strong>Telefon:</strong> 0761192418
-          </p>
+        {/* Rubrik */}
+        <p className="section-label">Hör av dig</p>
+        <h2 className="section-title">Kontakt</h2>
+
+        {/* Kontaktinfo */}
+        <div style={{ marginTop: "2rem", marginBottom: "3rem" }}>
+          <p><strong>Namn:</strong> Görkem Göker</p>
+          <p><strong>E-post:</strong> gorkem.goker9@gmail.com</p>
+          <p><strong>Telefon:</strong> 076-119 24 18</p>
         </div>
 
-        {/* Kontaktformulär */}
-        <div className="mt-10 bg-white p-8 rounded-lg shadow-lg">
+        {/* Formulär */}
+        <div className="card">
           <form onSubmit={handleSubmit}>
-            
-            {/* Namn + Email */}
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="flex flex-col">
-                <label className="text-lg font-medium text-gray-700">
-                  Full Name
-                </label>
+
+            <div className="grid grid-2">
+              <div>
+                <label>Namn</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="mt-2 p-3 border border-gray-300 rounded-lg"
-                  placeholder="Your name"
                   required
+                  style={{ width: "100%", padding: "0.7rem", marginTop: "0.3rem" }}
                 />
               </div>
 
-              <div className="flex flex-col">
-                <label className="text-lg font-medium text-gray-700">
-                  Email Address
-                </label>
+              <div>
+                <label>E-post</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="mt-2 p-3 border border-gray-300 rounded-lg"
-                  placeholder="Your email"
                   required
+                  style={{ width: "100%", padding: "0.7rem", marginTop: "0.3rem" }}
                 />
               </div>
             </div>
 
-            {/* Meddelande */}
-            <div className="flex flex-col mt-6">
-              <label className="text-lg font-medium text-gray-700">
-                Message
-              </label>
+            <div style={{ marginTop: "1.5rem" }}>
+              <label>Meddelande</label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                rows={6}
-                className="mt-2 p-3 border border-gray-300 rounded-lg"
-                placeholder="Your message"
+                rows={5}
                 required
+                style={{ width: "100%", padding: "0.7rem", marginTop: "0.3rem" }}
               />
             </div>
 
-            {/* Submit */}
-            <div className="mt-6 text-center">
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
-              >
-                {isLoading ? "Sending..." : "Send Message"}
+            <div style={{ marginTop: "2rem" }}>
+              <button className="btn" disabled={isLoading}>
+                {isLoading ? "Skickar..." : "Skicka meddelande"}
               </button>
             </div>
 
           </form>
         </div>
+
       </div>
     </section>
   );

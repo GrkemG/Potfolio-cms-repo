@@ -135,3 +135,6 @@ Tailwind CSS används för layout, grid och responsiv design.
 
 Projektet uppfyller fler än tre obligatoriska moment enligt kurskraven
 och innehåller både frontend, backend och API-kommunikation av hög kvalitet.
+
+## 
+“Projects-sektionen är helt datadriven från backend. Varje projekt renderas dynamiskt med titel, beskrivning och teknikstack.”

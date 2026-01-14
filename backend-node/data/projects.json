@@ -2,19 +2,40 @@
   {
     "id": 1,
     "title": "Portfolio CMS",
-    "description": "Examensarbete med React och Node",
+    "description": "Examensarbete där jag byggt en portfolio med React och ett eget backend-API i Node.js.",
     "tech": [
       "React",
+      "TypeScript",
       "Node.js",
       "REST API"
     ]
   },
   {
-    "id": 1768409538796,
-    "title": "Resturang meny"
+    "id": 2,
+    "title": "Restaurangbokning",
+    "description": "En React-applikation för hantering av bordsbokningar med API-integration.",
+    "tech": [
+      "React",
+      "TypeScript",
+      "API"
+    ]
   },
   {
-    "id": 1768409559549,
-    "title": "App"
+    "id": 3,
+    "title": "REST API-projekt",
+    "description": "Backendapplikation med CRUD-funktionalitet och strukturerade API-endpoints.",
+    "tech": [
+      "Node.js",
+      "Express",
+      "REST API"
+    ]
+  },
+  {
+    "id": 1768428581492,
+    "title": "Transportsystem"
+  },
+  {
+    "id": 1768428613493,
+    "title": "Tredjepartsystem"
   }
 ]

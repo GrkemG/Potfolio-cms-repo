@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
 
-/* Typ för projekt – matchar backend */
+/* Typ för projekt (ska matcha backend) */
 type Project = {
   id: number | string;
   title: string;
-  description?: string;
+  description: string;
   tech?: string[];
 };
 
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
+  /* Hämta projekt från backend */
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const res = await fetch("http://localhost:3001/api/projects");
+
+        if (!res.ok) {
+          throw new Error("Kunde inte hämta projekt");
+        }
+
         const data = await res.json();
         setProjects(data);
-      } catch (error) {
-        console.error("Failed to fetch projects", error);
+      } catch (err) {
+        console.error(err);
+        setError("Kunde inte ladda projekt från backend");
       }
     };
 
@@ -26,28 +34,48 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="section section-light">
       <div className="page">
 
-        <p className="section-label">My work</p>
-        <h2 className="section-title">Projects</h2>
+        {/* Rubrik */}
+        <p className="section-label">Mitt arbete</p>
+        <h2 className="section-title">Projekt</h2>
 
+        {/* Introtext */}
+        <p style={{ maxWidth: "700px", marginTop: "1.5rem", color: "#374151" }}>
+          Nedan visas ett urval av projekt jag har arbetat med under mina studier
+          och egna projekt. Fokus ligger på moderna webbapplikationer,
+          backend-lösningar och REST API:er.
+        </p>
+
+        {/* Felmeddelande */}
+        {error && (
+          <p style={{ marginTop: "2rem", color: "red" }}>
+            {error}
+          </p>
+        )}
+
+        {/* Projektlista */}
         <div className="grid grid-2" style={{ marginTop: "3rem" }}>
           {projects.map((project) => (
-            <div key={project.id} className="card">
-              <h3>{project.title}</h3>
+            <div key={project.id} className="card animate-fadeIn">
 
-              {project.description && (
-                <p style={{ marginTop: "0.75rem" }}>
-                  {project.description}
-                </p>
-              )}
+              {/* Projekttitel */}
+              <h3 className="project-title">
+                {project.title}
+              </h3>
 
-              {project.tech && (
-                <div className="tags">
-                  {project.tech.map((t) => (
-                    <span key={t} className="tag">
-                      {t}
+              {/* Beskrivning */}
+              <p className="project-desc">
+                {project.description}
+              </p>
+
+              {/* Tekniker */}
+              {project.tech && project.tech.length > 0 && (
+                <div className="project-tags">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="project-tag">
+                      {tech}
                     </span>
                   ))}
                 </div>
@@ -56,12 +84,12 @@ const Projects: React.FC = () => {
           ))}
         </div>
 
-        {projects.length === 0 && (
-          <p style={{ textAlign: "center", marginTop: "3rem", color: "#6b7280" }}>
-            No projects available.
+        {/* Tomt läge */}
+        {projects.length === 0 && !error && (
+          <p style={{ marginTop: "3rem", textAlign: "center", color: "#6b7280" }}>
+           
           </p>
         )}
-
       </div>
     </section>
   );

@@ -1,6 +1,3 @@
-// About – information om dig
-// Här beskriver du vem du är, vad du kan och vad du fokuserar på
-
 const About: React.FC = () => {
   return (
     <section
@@ -11,62 +8,60 @@ const About: React.FC = () => {
 
         {/* Rubrik */}
         <p className="text-lg text-gray-500 uppercase tracking-wider">
-          Get to know more
+          Lär känna mig
         </p>
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2">
-          About Me
+          Om mig
         </h2>
 
         {/* Kort introduktion */}
         <p className="mt-6 text-gray-700 leading-relaxed">
-          {/* 
-            Skriv 2–3 meningar om dig själv här.
+          {/*
+            Här skriver du 2–3 meningar om dig själv.
             Exempel:
-            - Vad du studerar / studerat
-            - Vad du gillar inom utveckling
-            - Vad du siktar på
+            - Vad du studerar eller har studerat
+            - Ditt intresse för utveckling
+            - Vad som motiverar dig
           */}
-          I am a motivated software developer with a strong interest in web
-          development. I enjoy building modern applications and continuously
-          improving my technical skills.
+          Jag är en motiverad mjukvaruutvecklare med ett starkt intresse för
+          webbutveckling. Jag tycker om att bygga moderna applikationer och
+          utvecklar ständigt mina tekniska färdigheter.
         </p>
 
         {/* Fördjupning */}
         <p className="mt-4 text-gray-700 leading-relaxed">
           {/*
-            Här kan du skriva mer detaljerat:
-            - Vad du jobbar med i projekt
+            Här kan du skriva lite mer detaljerat:
+            - Hur du arbetar i projekt
             - Frontend / backend
-            - Samarbete, problemlösning, struktur
+            - Struktur, problemlösning och kvalitet
           */}
-          My main focus is on creating user-friendly, responsive and maintainable
-          applications using modern web technologies.
+          Mitt huvudfokus ligger på att skapa användarvänliga, responsiva och
+          underhållbara applikationer med hjälp av moderna webbteknologier.
         </p>
 
-        {/* Kort fakta-rutor */}
+        {/* Fakta-rutor */}
         <div className="mt-10 grid gap-6 md:grid-cols-2">
 
-          {/* Fokus */}
+          {/* Fokusområden */}
           <div className="border border-gray-300 p-6 rounded-lg shadow-sm bg-white">
             <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              Focus Areas
+              Fokusområden
             </h3>
             <p className="text-gray-700">
-              {/* Exempel: */}
-              Frontend development, backend logic, REST APIs and clean code
-              structure.
+              Frontendutveckling, backendlogik, REST API:er samt ren och
+              strukturerad kod.
             </p>
           </div>
 
           {/* Mål */}
           <div className="border border-gray-300 p-6 rounded-lg shadow-sm bg-white">
             <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              Goals
+              Mål
             </h3>
             <p className="text-gray-700">
-              {/* Exempel: */}
-              To grow as a fullstack developer and contribute to real-world
-              projects with high quality and scalability.
+              Att utvecklas som fullstack-utvecklare och bidra till verkliga
+              projekt med hög kvalitet, prestanda och skalbarhet.
             </p>
           </div>
 
